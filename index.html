@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENSITIVITY GENERATOR OB55 - FREE FIRE</title>
+    <title>ANH TÚ ULTRA VIP</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0b0e14;
-            --card-bg: #121824;
+            --bg-color: #070a0f;
+            --card-bg: #0d121d;
             --primary-neon: #00ffcc;
             --secondary-neon: #ff0055;
             --accent-yellow: #ffcc00;
-            --text-color: #e0e6ed;
-            --text-dim: #8a99ad;
-            --border-glow: rgba(0, 255, 204, 0.3);
+            --text-color: #f0f4f8;
+            --text-dim: #7a8b9e;
+            --border-glow: rgba(0, 255, 204, 0.4);
         }
 
         * {
@@ -26,6 +26,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Rajdhani', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -34,23 +35,23 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start;
+            padding: 12px;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 0, 85, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 255, 204, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(255, 0, 85, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 255, 204, 0.12) 0%, transparent 40%);
         }
 
         .container {
             width: 100%;
-            max-width: 850px;
+            max-width: 500px;
             background: var(--card-bg);
             border: 2px solid var(--primary-neon);
-            box-shadow: 0 0 25px var(--border-glow), inset 0 0 15px rgba(0,255,204,0.1);
+            box-shadow: 0 0 20px var(--border-glow);
             border-radius: 16px;
-            padding: 30px;
+            padding: 20px 16px;
+            margin: 0 auto;
             position: relative;
-            overflow: hidden;
         }
 
         .container::before {
@@ -58,66 +59,66 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 4px;
             background: linear-gradient(90deg, var(--secondary-neon), var(--primary-neon), var(--accent-yellow));
+            border-radius: 16px 16px 0 0;
         }
 
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        h1 {
+        .app-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-neon);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--primary-neon);
+            text-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon);
+            line-height: 1.2;
         }
 
-        p.subtitle {
+        .app-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--secondary-neon);
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+            font-weight: 700;
+        }
+
+        .desc {
             color: var(--text-dim);
-            font-size: 1rem;
-            margin-top: 5px;
+            font-size: 0.85rem;
+            margin-top: 6px;
         }
 
-        /* Form Grid */
-        .grid-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        @media (max-width: 650px) {
-            .grid-form {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 16px;
         }
 
         label {
             font-weight: 700;
             color: var(--primary-neon);
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-bottom: 8px;
         }
 
         input[type="text"], select {
-            background: #090d14;
+            width: 100%;
+            background: #06090e;
             border: 1px solid rgba(0, 255, 204, 0.4);
             color: #fff;
-            padding: 12px 15px;
+            padding: 12px;
             border-radius: 8px;
             font-size: 1rem;
+            font-weight: 600;
             outline: none;
             transition: 0.3s;
         }
@@ -130,10 +131,11 @@
         /* OS Switcher */
         .os-switch {
             display: flex;
-            background: #090d14;
+            background: #06090e;
             border-radius: 8px;
             padding: 4px;
             border: 1px solid rgba(0, 255, 204, 0.3);
+            gap: 4px;
         }
 
         .os-btn {
@@ -142,7 +144,7 @@
             border: none;
             background: transparent;
             color: var(--text-dim);
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             border-radius: 6px;
             transition: 0.3s;
@@ -150,6 +152,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 0.95rem;
         }
 
         .os-btn.active {
@@ -158,90 +161,34 @@
             box-shadow: 0 0 10px var(--primary-neon);
         }
 
-        /* Range Slider */
-        .slider-container {
+        /* Slider */
+        .slider-wrap {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            background: #06090e;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 204, 0.3);
         }
 
         input[type="range"] {
             flex: 1;
             accent-color: var(--primary-neon);
             cursor: pointer;
+            height: 6px;
         }
 
         .slider-val {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent-yellow);
-            font-weight: bold;
+            font-weight: 800;
+            font-size: 1.1rem;
             min-width: 45px;
+            text-align: right;
         }
 
-        /* Results Display */
-        .results-panel {
-            background: #090c12;
-            border: 1px dashed var(--primary-neon);
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .results-title {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--secondary-neon);
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            text-shadow: 0 0 8px var(--secondary-neon);
-        }
-
-        .res-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .res-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid var(--primary-neon);
-            padding: 12px 15px;
-            border-radius: 6px;
-        }
-
-        .res-card.highlight {
-            border-left-color: var(--secondary-neon);
-            background: rgba(255, 0, 85, 0.05);
-        }
-
-        .res-label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-        }
-
-        .res-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #fff;
-            margin-top: 5px;
-        }
-
-        .res-unit {
-            font-size: 0.8rem;
-            color: var(--accent-yellow);
-        }
-
-        /* Footer / Disclaimer */
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* Glow Button */
+        /* Generate Button */
         .calc-btn {
             width: 100%;
             background: linear-gradient(45deg, var(--secondary-neon), var(--primary-neon));
@@ -251,18 +198,76 @@
             font-weight: 900;
             padding: 14px;
             font-size: 1.1rem;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-bottom: 20px;
-            transition: 0.3s;
+            margin: 18px 0;
+            transition: 0.2s;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+        }
+
+        .calc-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Results Panel */
+        .results-panel {
+            background: #06090f;
+            border: 1px dashed var(--primary-neon);
+            border-radius: 12px;
+            padding: 16px 12px;
+        }
+
+        .results-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary-neon);
+            text-align: center;
+            margin-bottom: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-shadow: 0 0 8px var(--secondary-neon);
             letter-spacing: 1px;
         }
 
-        .calc-btn:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 20px var(--primary-neon);
-            transform: translateY(-2px);
+        .res-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .res-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--primary-neon);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .res-card.highlight {
+            border-left-color: var(--secondary-neon);
+            background: rgba(255, 0, 85, 0.06);
+        }
+
+        .res-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .res-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
         }
     </style>
 </head>
@@ -270,103 +275,85 @@
 
 <div class="container">
     <header>
-        <h1><i class="fa-solid fa-crosshairs"></i> OB55 SENSITIVITY HUB</h1>
-        <p class="subtitle">Trình tính toán Độ Nhạy & Nút Bắn Chuẩn Chuẩn Chuẩn Free Fire OB55</p>
+        <div class="app-title">ANH TÚ ULTRA VIP</div>
+        <div class="app-subtitle">SENSITIVITY OB55</div>
+        <p class="desc">Trình tính toán độ nhạy & nút bắn tối ưu</p>
     </header>
 
-    <div class="grid-form">
-        <!-- Tên thiết bị -->
-        <div class="input-group">
-            <label><i class="fa-solid fa-mobile-screen-button"></i> Tên Thiết Bị / Máy:</label>
-            <input type="text" id="deviceName" placeholder="VD: iPhone 13 Pro Max, ROG Phone, POCO X3..." value="iPhone 13 Pro Max">
-        </div>
+    <div class="form-group">
+        <label><i class="fa-solid fa-mobile-screen-button"></i> Tên Thiết Bị / Máy:</label>
+        <input type="text" id="deviceName" placeholder="Nhập tên máy..." value="iPhone 13 Pro Max">
+    </div>
 
-        <!-- Hệ điều hành -->
-        <div class="input-group">
-            <label><i class="fa-solid fa-microchip"></i> Hệ Điều Hành:</label>
-            <div class="os-switch">
-                <button type="button" class="os-btn active" id="btnIos" onclick="setOS('ios')">
-                    <i class="fa-brands fa-apple"></i> iOS
-                </button>
-                <button type="button" class="os-btn" id="btnAndroid" onclick="setOS('android')">
-                    <i class="fa-brands fa-android"></i> Android
-                </button>
-            </div>
-        </div>
-
-        <!-- Tùy chỉnh phong cách bắn -->
-        <div class="input-group">
-            <label><i class="fa-solid fa-hand-pointer"></i> Phong Cách Kéo Tâm:</label>
-            <select id="dragStyle">
-                <option value="fast">Kéo nhanh / Tốc độ (Tầm gần/M1887/Súng ngắm)</option>
-                <option value="balanced" selected>Cân bằng / Đa dụng (Mọi loại súng)</option>
-                <option value="smooth">Ghim tâm / Nhẹ nhàng (Tầm trung & xa)</option>
-            </select>
-        </div>
-
-        <!-- Kích thước nút bắn mong muốn -->
-        <div class="input-group">
-            <label><i class="fa-solid fa-circle-dot"></i> Nút Bắn Mong Muốn (0 - 100%):</label>
-            <div class="slider-container">
-                <input type="range" id="buttonSizeInput" min="0" max="100" value="45" oninput="updateButtonVal(this.value)">
-                <span class="slider-val" id="buttonVal">45%</span>
-            </div>
+    <div class="form-group">
+        <label><i class="fa-solid fa-microchip"></i> Hệ Điều Hành:</label>
+        <div class="os-switch">
+            <button type="button" class="os-btn active" id="btnIos" onclick="setOS('ios')">
+                <i class="fa-brands fa-apple"></i> iOS
+            </button>
+            <button type="button" class="os-btn" id="btnAndroid" onclick="setOS('android')">
+                <i class="fa-brands fa-android"></i> Android
+            </button>
         </div>
     </div>
 
-    <button class="calc-btn" onclick="generateSens()"><i class="fa-solid fa-bolt"></i> Tạo Thông Số Chuẩn OB55</button>
+    <div class="form-group">
+        <label><i class="fa-solid fa-hand-pointer"></i> Phong Cách Kéo Tâm:</label>
+        <select id="dragStyle">
+            <option value="fast">Kéo nhanh / Tốc độ</option>
+            <option value="balanced" selected>Cân bằng / Đa dụng</option>
+            <option value="smooth">Ghim tâm / Nhẹ nhàng</option>
+        </select>
+    </div>
 
-    <!-- Bảng kết quả -->
+    <div class="form-group">
+        <label><i class="fa-solid fa-circle-dot"></i> Kích Thước Nút Bắn:</label>
+        <div class="slider-wrap">
+            <input type="range" id="buttonSizeInput" min="0" max="100" value="45" oninput="updateButtonVal(this.value)">
+            <span class="slider-val" id="buttonVal">45%</span>
+        </div>
+    </div>
+
+    <button class="calc-btn" onclick="generateSens()"><i class="fa-solid fa-bolt"></i> TẠO CẤU HÌNH VIP</button>
+
     <div class="results-panel">
-        <div class="results-title"><i class="fa-solid fa-sliders"></i> CẤU HÌNH KHUYÊN DÙNG OB55</div>
+        <div class="results-title"><i class="fa-solid fa-sliders"></i> CẤU HÌNH ĐỘ NHẠY OB55</div>
         
         <div class="res-grid">
-            <!-- Độ nhạy nhìn xung quanh (0 - 200) -->
             <div class="res-card highlight">
-                <div class="res-label">Nhìn Xung Quanh (OB55)</div>
+                <div class="res-label">Nhìn Xung Quanh</div>
                 <div class="res-value" id="resGeneral">175</div>
-                <div class="res-unit">Thang 0 - 200</div>
             </div>
 
-            <!-- Red Dot -->
             <div class="res-card">
                 <div class="res-label">Red Dot Sight</div>
                 <div class="res-value" id="resRedDot">160</div>
-                <div class="res-unit">Thang 0 - 200</div>
             </div>
 
-            <!-- Ống ngắm 2x -->
             <div class="res-card">
                 <div class="res-label">Ống Ngắm 2X</div>
                 <div class="res-value" id="res2x">150</div>
-                <div class="res-unit">Thang 0 - 200</div>
             </div>
 
-            <!-- Ống ngắm 4x -->
             <div class="res-card">
                 <div class="res-label">Ống Ngắm 4X</div>
                 <div class="res-value" id="res4x">140</div>
-                <div class="res-unit">Thang 0 - 200</div>
             </div>
 
-            <!-- Nút Bắn Khuyên Dùng -->
             <div class="res-card highlight">
-                <div class="res-label">Kích Thước Nút Bắn</div>
+                <div class="res-label">Nút Bắn</div>
                 <div class="res-value" id="resBtnSize">45%</div>
-                <div class="res-unit">Thang 0 - 100%</div>
             </div>
 
-            <!-- Thông số riêng cho OS -->
-            <div class="res-card highlight" id="osSpecCard">
-                <div class="res-label" id="osSpecLabel">Con Trỏ Trượt (iOS)</div>
+            <div class="res-card highlight">
+                <div class="res-label" id="osSpecLabel">Con Trỏ Trượt</div>
                 <div class="res-value" id="osSpecValue">110</div>
-                <div class="res-unit" id="osSpecUnit">Thang 0 - 120 (Liên tục)</div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p><i class="fa-solid fa-shield-halved"></i> Tối ưu hoá riêng cho phiên bản Free Fire OB55 | Cập nhật 2026</p>
+        <p><i class="fa-solid fa-shield-halved"></i> ANH TÚ ULTRA VIP - Free Fire OB55 Edition</p>
     </footer>
 </div>
 
@@ -378,16 +365,12 @@
         document.getElementById('btnIos').classList.toggle('active', os === 'ios');
         document.getElementById('btnAndroid').classList.toggle('active', os === 'android');
         
-        // Đổi hiển thị nhãn hệ điều hành
         const specLabel = document.getElementById('osSpecLabel');
-        const specUnit = document.getElementById('osSpecUnit');
         
         if (os === 'ios') {
-            specLabel.innerText = "Con Trỏ Trượt (iOS)";
-            specUnit.innerText = "Thang 0 - 120 (Liên tục)";
+            specLabel.innerText = "Con Trỏ Trượt";
         } else {
-            specLabel.innerText = "Chỉ Số DPI (Android)";
-            specUnit.innerText = "Chuẩn Developer Options";
+            specLabel.innerText = "Chỉ Số DPI";
         }
         
         generateSens();
@@ -402,7 +385,6 @@
         const style = document.getElementById('dragStyle').value;
         const customBtn = parseInt(document.getElementById('buttonSizeInput').value);
 
-        // Thuật toán tính toán cơ sở theo tên & loại máy
         let baseGeneral = 160;
         let baseDpi = 420;
         let baseCursor = 100;
@@ -414,13 +396,11 @@
             baseGeneral = 170;
             baseDpi = 460;
         } else if (name.includes('pro max') || name.includes('ultra') || name.includes('plus')) {
-            // Máy màn hình lớn
             baseGeneral = 165;
             baseDpi = 450;
             baseCursor = 115;
         }
 
-        // Điều chỉnh theo phong cách
         if (style === 'fast') {
             baseGeneral += 15;
             baseDpi += 30;
@@ -431,14 +411,12 @@
             baseCursor -= 10;
         }
 
-        // Khóa trong khung quy định
-        let finalGeneral = Math.min(Math.max(baseGeneral, 100), 200);
-        let finalRedDot = Math.min(Math.max(finalGeneral - 15, 80), 200);
-        let final2x = Math.min(Math.max(finalGeneral - 25, 70), 200);
-        let final4x = Math.min(Math.max(finalGeneral - 35, 60), 200);
+        let finalGeneral = Math.min(Math.max(baseGeneral, 0), 200);
+        let finalRedDot = Math.min(Math.max(finalGeneral - 15, 0), 200);
+        let final2x = Math.min(Math.max(finalGeneral - 25, 0), 200);
+        let final4x = Math.min(Math.max(finalGeneral - 35, 0), 200);
         let finalCursor = Math.min(Math.max(baseCursor, 0), 120);
 
-        // Xuất kết quả
         document.getElementById('resGeneral').innerText = finalGeneral;
         document.getElementById('resRedDot').innerText = finalRedDot;
         document.getElementById('res2x').innerText = final2x;
@@ -452,7 +430,6 @@
         }
     }
 
-    // Tự động tính khi tải trang lần đầu
     window.onload = function() {
         generateSens();
     };
