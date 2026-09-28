@@ -44,7 +44,7 @@
 
         .container {
             width: 100%;
-            max-width: 650px; /* Mở rộng chiều rộng giúp trang to rõ hơn */
+            max-width: 650px;
             background: var(--card-bg);
             border: 2px solid var(--primary-neon);
             box-shadow: 0 0 25px var(--border-glow);
@@ -69,7 +69,7 @@
 
         .app-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem; /* Tăng kích thước tiêu đề */
+            font-size: 2.2rem;
             font-weight: 900;
             color: #fff;
             text-transform: uppercase;
@@ -94,7 +94,6 @@
             font-weight: 600;
         }
 
-        /* Form Controls */
         .form-group {
             margin-bottom: 20px;
         }
@@ -129,7 +128,6 @@
             box-shadow: 0 0 12px var(--border-glow);
         }
 
-        /* OS Switcher */
         .os-switch {
             display: flex;
             background: #06090e;
@@ -162,7 +160,6 @@
             box-shadow: 0 0 12px var(--primary-neon);
         }
 
-        /* Slider */
         .slider-wrap {
             display: flex;
             align-items: center;
@@ -189,7 +186,6 @@
             text-align: right;
         }
 
-        /* Generate Button */
         .calc-btn {
             width: 100%;
             background: linear-gradient(45deg, var(--secondary-neon), var(--primary-neon));
@@ -212,7 +208,6 @@
             transform: scale(0.98);
         }
 
-        /* Results Panel */
         .results-panel {
             background: #06090f;
             border: 1px dashed var(--primary-neon);
@@ -265,7 +260,6 @@
             margin-top: 4px;
         }
 
-        /* Copy Button */
         .copy-btn {
             width: 100%;
             background: transparent;
@@ -311,12 +305,12 @@
     <header>
         <div class="app-title">ANH TÚ ULTRA VIP</div>
         <div class="app-subtitle">SENSITIVITY OB55</div>
-        <p class="desc">Trình tính toán độ nhạy & nút bắn tối ưu</p>
+        <p class="desc">Trình tính toán độ nhạy & nút bắn tối ưu theo từng máy</p>
     </header>
 
     <div class="form-group">
         <label><i class="fa-solid fa-mobile-screen-button"></i> Tên Thiết Bị / Máy:</label>
-        <input type="text" id="deviceName" placeholder="Nhập tên máy..." value="iPhone 13 Pro Max">
+        <input type="text" id="deviceName" placeholder="Nhập tên máy (VD: iPhone 13, Poco X3, Red Magic...)" value="iPhone 13 Pro Max" oninput="generateSens()">
     </div>
 
     <div class="form-group">
@@ -341,10 +335,10 @@
     </div>
 
     <div class="form-group">
-        <label><i class="fa-solid fa-circle-dot"></i> Kích Thước Nút Bắn:</label>
+        <label><i class="fa-solid fa-circle-dot"></i> Kích Thước Nút Bắn Tối Ưu:</label>
         <div class="slider-wrap">
-            <input type="range" id="buttonSizeInput" min="10" max="100" value="45" oninput="updateButtonVal(this.value)" onchange="generateSens()">
-            <span class="slider-val" id="buttonVal">45%</span>
+            <input type="range" id="buttonSizeInput" min="10" max="100" value="42" oninput="manualButtonVal(this.value)">
+            <span class="slider-val" id="buttonVal">42%</span>
         </div>
     </div>
 
@@ -376,7 +370,7 @@
 
             <div class="res-card highlight">
                 <div class="res-label">Nút Bắn</div>
-                <div class="res-value" id="resBtnSize">45%</div>
+                <div class="res-value" id="resBtnSize">42%</div>
             </div>
 
             <div class="res-card highlight">
@@ -396,68 +390,91 @@
 <script>
     let currentOS = 'ios';
 
+    // Hàm băm chuỗi tên máy ra giá trị số riêng biệt cho từng thiết bị
+    function getDeviceHash(str) {
+        let hash = 0;
+        const cleanStr = str.toLowerCase().replace(/\s+/g, '');
+        if (cleanStr.length === 0) return 0;
+        for (let i = 0; i < cleanStr.length; i++) {
+            const char = cleanStr.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash |= 0;
+        }
+        return Math.abs(hash);
+    }
+
     function setOS(os) {
         currentOS = os;
         document.getElementById('btnIos').classList.toggle('active', os === 'ios');
         document.getElementById('btnAndroid').classList.toggle('active', os === 'android');
         
         const specLabel = document.getElementById('osSpecLabel');
-        
-        if (os === 'ios') {
-            specLabel.innerText = "Con Trỏ Trượt";
-        } else {
-            specLabel.innerText = "Chỉ Số DPI";
-        }
+        specLabel.innerText = (os === 'ios') ? "Con Trỏ Trượt" : "Chỉ Số DPI";
         
         generateSens();
     }
 
-    function updateButtonVal(val) {
+    function manualButtonVal(val) {
         document.getElementById('buttonVal').innerText = val + '%';
+        document.getElementById('resBtnSize').innerText = val + '%';
     }
 
     function generateSens() {
-        const name = document.getElementById('deviceName').value.toLowerCase();
+        const rawName = document.getElementById('deviceName').value.trim();
         const style = document.getElementById('dragStyle').value;
-        const customBtn = parseInt(document.getElementById('buttonSizeInput').value);
+        const hash = getDeviceHash(rawName);
 
-        let baseGeneral = 160;
-        let baseDpi = 420;
-        let baseCursor = 100;
+        // Nút bắn cơ bản biến thiên từ 36% đến 52% dựa theo mã tên máy
+        let autoBtnSize = 36 + (hash % 17);
 
-        if (name.includes('iphone') || name.includes('ipad')) {
-            baseGeneral = 150;
-            baseCursor = 110;
-        } else if (name.includes('rog') || name.includes('black shark') || name.includes('gaming')) {
-            baseGeneral = 170;
-            baseDpi = 460;
-        } else if (name.includes('pro max') || name.includes('ultra') || name.includes('plus')) {
-            baseGeneral = 165;
-            baseDpi = 450;
-            baseCursor = 115;
-        }
+        // Độ nhạy tổng quan biến thiên từ 150 đến 180 dựa theo mã máy
+        let baseGeneral = 150 + (hash % 31);
+        
+        // DPI biến thiên từ 410 đến 490, Con trỏ biến thiên từ 95 đến 120
+        let baseDpi = 410 + (hash % 81);
+        let baseCursor = 95 + (hash % 26);
 
-        if (style === 'fast') {
-            baseGeneral += 15;
+        // Điều chỉnh bổ sung theo tên từ khóa thiết bị
+        const lowerName = rawName.toLowerCase();
+        if (lowerName.includes('pro max') || lowerName.includes('ultra') || lowerName.includes('pad') || lowerName.includes('tab')) {
+            autoBtnSize -= 4; // Màn hình to thì nút bắn nhỏ lại
+            baseGeneral += 5;
+        } else if (lowerName.includes('rog') || lowerName.includes('gaming') || lowerName.includes('shark') || lowerName.includes('magic')) {
+            autoBtnSize -= 2;
+            baseGeneral += 10;
             baseDpi += 30;
-            baseCursor += 10;
-        } else if (style === 'smooth') {
-            baseGeneral -= 15;
-            baseDpi -= 20;
-            baseCursor -= 10;
         }
 
-        let finalGeneral = Math.min(Math.max(baseGeneral, 0), 200);
-        let finalRedDot = Math.min(Math.max(finalGeneral - 15, 0), 200);
-        let final2x = Math.min(Math.max(finalGeneral - 25, 0), 200);
-        let final4x = Math.min(Math.max(finalGeneral - 35, 0), 200);
-        let finalCursor = Math.min(Math.max(baseCursor, 0), 120);
+        // Điều chỉnh theo phong cách kéo tâm
+        if (style === 'fast') {
+            baseGeneral += 12;
+            baseDpi += 25;
+            baseCursor += 8;
+            autoBtnSize -= 3;
+        } else if (style === 'smooth') {
+            baseGeneral -= 12;
+            baseDpi -= 20;
+            baseCursor -= 8;
+            autoBtnSize += 4;
+        }
+
+        // Giới hạn khoảng hiển thị an toàn
+        let finalGeneral = Math.min(Math.max(baseGeneral, 120), 200);
+        let finalRedDot = Math.min(Math.max(finalGeneral - (10 + (hash % 8)), 0), 200);
+        let final2x = Math.min(Math.max(finalGeneral - (20 + (hash % 8)), 0), 200);
+        let final4x = Math.min(Math.max(finalGeneral - (30 + (hash % 8)), 0), 200);
+        let finalCursor = Math.min(Math.max(baseCursor, 80), 120);
+        let finalBtnSize = Math.min(Math.max(autoBtnSize, 28), 75);
+
+        // Cập nhật lên màn hình giao diện
+        document.getElementById('buttonSizeInput').value = finalBtnSize;
+        document.getElementById('buttonVal').innerText = finalBtnSize + '%';
+        document.getElementById('resBtnSize').innerText = finalBtnSize + '%';
 
         document.getElementById('resGeneral').innerText = finalGeneral;
         document.getElementById('resRedDot').innerText = finalRedDot;
         document.getElementById('res2x').innerText = final2x;
         document.getElementById('res4x').innerText = final4x;
-        document.getElementById('resBtnSize').innerText = customBtn + '%';
 
         if (currentOS === 'ios') {
             document.getElementById('osSpecValue').innerText = finalCursor;
